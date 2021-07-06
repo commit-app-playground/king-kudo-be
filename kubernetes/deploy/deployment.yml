@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: king-kudo-be
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: king-kudo-be
+  template:
+    spec:
+      containers:
+        - name: king-kudo-be
+          image: fake-image
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 0.1
+            limits:
+              memory: 256Mi
+              cpu: 0.5
+          ports:
+            - containerPort: 80
+              name: http
+          envFrom:
+          - configMapRef:
+              name: king-kudo-be-config
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 2

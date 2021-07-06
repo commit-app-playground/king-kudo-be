@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: king-kudo-be
+  annotations:
+    # nginx ingress
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # cert-manager
+    ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: clusterissuer-letsencrypt-production
+    # CORS
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "king-kudo-be.spa.onboarding.dev"
+
+spec:
+  rules:
+  - host: king-kudo-be-api.onboarding.dev
+    http:
+      paths:
+        - path: /(.*)
+          backend:
+            serviceName: king-kudo-be
+            servicePort: http
+  tls:
+  - hosts:
+    - king-kudo-be-api.onboarding.dev
+    secretName: king-kudo-be-tls-secret
