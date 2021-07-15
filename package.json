@@ -1,0 +1,27 @@
+{
+  "name": "slack-cred",
+  "version": "1.0.0",
+  "description": "community points and redemption bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "init": "node init.js",
+    "dev": "nodemon app.js --inspect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commit-app-playground/king-kudo-be.git"
+  },
+  "author": "cking604",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/commit-app-playground/king-kudo-be/issues"
+  },
+  "homepage": "https://github.com/commit-app-playground/king-kudo-be#readme",
+  "dependencies": {
+    "@slack/bolt": "^3.4.1",
+    "aws-sdk": "^2.942.0",
+    "dotenv": "^10.0.0"
+  }
+}
