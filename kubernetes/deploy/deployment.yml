@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: king-kudo-be
-          image: fake-image
+          image: king-be
           resources:
             requests:
               memory: 128Mi

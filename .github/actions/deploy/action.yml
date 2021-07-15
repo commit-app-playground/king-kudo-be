@@ -38,7 +38,7 @@ runs:
       IMAGE=${{ inputs.docker-host }}/${{ inputs.ecr-repository-name }}
 
       cd kubernetes/deploy
-      kustomize edit set image fake-image=${IMAGE}:$IMAGE_TAG
+      kustomize edit set image king-be=${IMAGE}:$IMAGE_TAG
       kustomize build . | kubectl apply -f - -n $NAMESPACE
       if ! kubectl -n $NAMESPACE rollout status deployment/$DEPLOYMENT -w --timeout=180s ; then
         echo "$DEPLOYMENT rollout check failed:"
